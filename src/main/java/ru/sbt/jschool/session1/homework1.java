@@ -48,10 +48,9 @@ public class homework1 implements PropertyHelper {
              }
         }
         if (System.getenv(name) != null) {
-            String filePath = System.getenv(name);
             try {
                 Properties p = new Properties();
-                FileInputStream _p = new FileInputStream(filePath);
+                FileInputStream _p = new FileInputStream(path);
                 p.load(_p);
                 return p.getProperty(name);
             } catch (IOException e) {
