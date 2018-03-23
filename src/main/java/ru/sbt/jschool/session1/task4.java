@@ -19,7 +19,7 @@ public class task4 {
         if (args.length > 0) {
             for (String arg : args) {
                 try {
-                    if (arg.substring(0, 14).equals(t)) {
+                    if (arg.startsWith(t)) {
                         helloWorld(Integer.parseInt(arg.substring(15, arg.length())));
                     }
                 } catch (NumberFormatException e) {
@@ -49,14 +49,12 @@ public class task4 {
             }
             String r = prop.toString();
             if (r.substring(1, 15).equals(t)) {
-                int x = Integer.parseInt(r.substring(16, r.length() - 1));
-                helloWorld(x);
+                helloWorld(Integer.parseInt(r.substring(16, r.length() - 1)));
             }*/
             try {
                 Properties p = new Properties();
                 FileInputStream _p = new FileInputStream(filePath);
                 p.load(_p);
-                _p.close();
                 helloWorld(Integer.parseInt(p.getProperty(t)));
             } catch (IOException e){
                 e.printStackTrace();
