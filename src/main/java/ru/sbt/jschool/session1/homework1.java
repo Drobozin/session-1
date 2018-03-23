@@ -74,8 +74,9 @@ public class homework1 implements PropertyHelper {
     }
 
     public static void main (String [] args){
-        homework1 test = new homework1(null, "/Users/Andrey/IdeaProjects/session-1/src/main/java/ru/sbt/jschool/session1/prop");
-        System.out.println(test.stringValue("JSCHOOL1_COUNT"));
+        homework1 test = new homework1(args, null);
+        System.out.println(test.stringValue("zxc"));
+
     }
 
 }
