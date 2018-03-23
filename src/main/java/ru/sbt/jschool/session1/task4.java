@@ -4,13 +4,9 @@ package ru.sbt.jschool.session1;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Properties;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class task4 {
     public static void main(String[] args) {
@@ -21,6 +17,8 @@ public class task4 {
                 try {
                     if (arg.startsWith(t)) {
                         helloWorld(Integer.parseInt(arg.substring(15, arg.length())));
+                        System.out.println();
+                        return;
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Параметр введен некорректно");
@@ -31,37 +29,28 @@ public class task4 {
         if (System.getProperty(t) != null) {
              if (!(System.getProperty(t).isEmpty())) {
                     helloWorld(Integer.parseInt(System.getProperty(t)));
+                    return;
                 }
             }
-            System.out.println();
-        if (System.getenv(t) != null) {
+        else if (System.getenv(t) != null) {
              if (!(System.getenv(t).isEmpty())) {
                     helloWorld(Integer.parseInt(System.getenv(t)));
+                    return;
                 }
             }
-        if (System.getenv(b) != null) {
+        else if (System.getenv(b) != null) {
             String filePath = System.getenv(b);
-            /*List<String> prop = new ArrayList<>();
-            try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
-                prop = stream.collect(Collectors.toList());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String r = prop.toString();
-            if (r.substring(1, 15).equals(t)) {
-                helloWorld(Integer.parseInt(r.substring(16, r.length() - 1)));
-            }*/
             try {
                 Properties p = new Properties();
                 FileInputStream _p = new FileInputStream(filePath);
                 p.load(_p);
                 helloWorld(Integer.parseInt(p.getProperty(t)));
+                return;
             } catch (IOException e){
                 e.printStackTrace();
             }
         }
         else {
-                System.out.println();
                 System.out.println("Программа выводит 'Hello World!' количество раз, преданное: ");
                 System.out.println("1.Если передан параметр вида JSCHOOl1_COUNT=XXX, где XXX число раз, то используется оно. \n" +
                         " 2. Если передана системная настройка вида JSCHOOl1_COUNT=XXX, где XXX число раз, то используется оно. \n" +
@@ -75,7 +64,15 @@ public class task4 {
         for (int i = 0; i < x; i++) {
             System.out.println(h);
         }
-
     }
 }
-
+ /*List<String> prop = new ArrayList<>();
+            try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
+                prop = stream.collect(Collectors.toList());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String r = prop.toString();
+            if (r.substring(1, 15).equals(t)) {
+                helloWorld(Integer.parseInt(r.substring(16, r.length() - 1)));
+            }*/

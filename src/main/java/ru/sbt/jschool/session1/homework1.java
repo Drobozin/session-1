@@ -4,6 +4,7 @@ public class homework1 implements PropertyHelper {
 
     public static void main (String [] args){
 
+
     }
 
     @Override
