@@ -1,5 +1,6 @@
 package ru.sbt.jschool.session1;
 
+import java.io.Console;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -36,17 +37,17 @@ public class homework1 implements PropertyHelper {
                 }
             }
         }
-        else if (System.getProperty(name) != null) {
+        if (System.getProperty(name) != null) {
              if (!(System.getProperty(name).isEmpty())) {
                 return System.getProperty(name);
              }
         }
-        else if (System.getenv(name) != null) {
+        if (System.getenv(name) != null) {
              if (!(System.getenv(name).isEmpty())) {
                 return (System.getenv(name));
              }
         }
-        else if (System.getenv(name) != null) {
+        if (System.getenv(name) != null) {
             String filePath = System.getenv(name);
             try {
                 Properties p = new Properties();
@@ -60,7 +61,7 @@ public class homework1 implements PropertyHelper {
         else {
             return null;
         }
-        return null;
+        return name;
     }
 
     @Override
@@ -75,8 +76,7 @@ public class homework1 implements PropertyHelper {
 
     public static void main (String [] args){
         homework1 test = new homework1(null, "/Users/Andrey/IdeaProjects/session-1/src/main/java/ru/sbt/jschool/session1/prop");
-        test.stringValue("")
-
+        System.out.println(test.stringValue("JSCHOOL1_COUNT"));
     }
 
 }
